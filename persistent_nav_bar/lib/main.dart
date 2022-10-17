@@ -67,8 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
           _currentIndex = index;
           if(_currentIndex==2){
-          // Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          // const WebView()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) =>
+          const WebView()));
+
+
+
           Fluttertoast.showToast(
               msg: "This is Center Short Toast",
               toastLength: Toast.LENGTH_SHORT,

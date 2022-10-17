@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart' as wv;
 
 class WebView extends StatefulWidget{
   const WebView({super.key});
@@ -15,17 +15,11 @@ class WebviewState extends State<WebView>{
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-   return Container(
+   return SizedBox(
      height: size.height,
      width: size.width,
-     child: WebviewScaffold(
-       url: url,
-       hidden: true,
-       appCacheEnabled: true,
-       withZoom: true,
-
-
-
+     child: const wv.WebView(
+         initialUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
      ),
    );
   }
