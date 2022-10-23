@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grid_view/Maps.dart';
+import 'package:grid_view/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,18 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,52 +60,72 @@ class _MyHomePageState extends State<MyHomePage> {
         height: size.height,
         width: size.width,
         color: Colors.white,
-        child: Stack(
+        child: Column(
           children: [
-            Positioned(
-              top: 0,
-              left: 0,
-              child: Row(
+            Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  GestureDetector(onTap:() => Navigator.pop(context),
-                  child: const Icon(Icons.backspace_outlined,)),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20,top:50.0),
+                    child: GestureDetector(onTap:() => Navigator.pop(context),
+                        child: const Icon(Icons.backspace_outlined,)),
+                  ),
 
                 ],
               ),
+            Row(
+              children: [
+                TextButton(
+                    style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+
+                    ), onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Menu()));
+                  }, child: const Text("Menu"),
+                  ),
+              ],
             ),
+
+            SizedBox(
+              height: size.height/1.2,
+              width: size.width,
+              child: Stack(
+                children: [
+
        /* Positioned(
-          bottom: size.height/3,
-          child: SizedBox(
-            height: 60,
-            child: ListView.builder(
-              primary: true,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (context,position){
-                return const DemoItem();
-              },),
-          ),
-        ),*/
-        Positioned(
-          bottom: 100,
-          height: size.height/1.25,
-          width:  size.width,
-          child: SizedBox(
-            child: GridView.builder(
-              itemCount: 100,
-              itemBuilder: (context, index) => const DemoItem(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 3,
+                bottom: size.height/3,
+                child: SizedBox(
+                  height: 60,
+                  child: ListView.builder(
+                    primary: true,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (context,position){
+                      return const DemoItem();
+                    },),
+                ),
+              ),*/
+              Positioned(
+                height: size.height/1.05,
+                width:  size.width,
+                child: SizedBox(
+                  child: GridView.builder(
+                    itemCount: 50,
+                    itemBuilder: (context, index) => const DemoItem(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 16/18,
+                    ),
+
+                  ),
+                ),
               ),
 
-            ),
-          ),
-        ),
-        ],
+              ],
       ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -130,24 +141,36 @@ class DemoItem extends StatelessWidget {
         .size;
     return SizedBox(
         width: size.width / 3,
-        height: 100,
-        child: Card(
-          elevation: 2,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
+        height: 250,
+        child: GestureDetector(onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => MapSample()));
+        },
+          child: Card(
+            elevation: 4,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-                    Container(
+                      Container(
 
-                      height: 200, width: 200,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.grey,),
-                      child: Image.asset("images/food.jpg",height: 150,width: 150,fit: BoxFit.cover,),
-                    ),
-                    const SizedBox(width: 8,),
-                    const Text("test")
+                        height: 150, width: 250,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.grey,),
+                        child: Image.asset("images/food.jpg",height: 150,width: 150,fit: BoxFit.cover,),
+                      ),
+                      const SizedBox(width: 8,),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 12.0),
+                        child: Text("Syanko Katti Roll",style: TextStyle(fontSize: 17),),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 10.0),
+                        child: Text("Double Egg Chicken Paneer"),
+                      )
 
-              ],
+                ],
+              ),
             ),
           ),
         )
