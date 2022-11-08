@@ -1,7 +1,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/customcards.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -11,8 +11,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  String url = 'xyz';
-  String imageURL = 'image';
+  String url = 'https://e3.365dm.com/22/08/768x432/skynews-breaking-news-breakingnews_5875724.jpg?20220906151704';
+  String imageURL = 'https://yt3.ggpht.com/MRywaef1JLriHf-MUivy7-WAoVAL4sB7VHZXgmprXtmpOlN73I4wBhjjWdkZNFyJNiUP6MHm1w=s900-c-k-c0x00ffffff-no-rj';
   @override
     Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -60,17 +60,23 @@ class _DashboardState extends State<Dashboard> {
                            placeholder: (context,url)=>
                            const CircularProgressIndicator(),
                          ),
-                         Column(
-                           children: const [
-                             Text("Henlo Henlo",
-                               style: TextStyle(fontSize: 15,
-                                   fontStyle: FontStyle.italic),
-                             ),
-                             Text(" Date",
-                               style: TextStyle(fontSize: 15,
-                                   fontStyle: FontStyle.italic),
-                             ),
-                           ],
+                         Positioned(
+                           bottom: 5,left: 10,
+                           child: Column(
+                             children: const [
+                               Padding(
+                                 padding: EdgeInsets.only(bottom: 0.0),
+                                 child: Text("Henlo Henlo",
+                                   style: TextStyle(fontSize: 15,
+                                       fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
+                                 ),
+                               ),
+                               Text(" Date",
+                                 style: TextStyle(fontSize: 15,
+                                     fontStyle: FontStyle.italic),
+                               ),
+                             ],
+                           ),
                          ),
                          const Positioned(
                            bottom: 10,
@@ -83,6 +89,17 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
+              ),
+            ),
+            Container(
+              height: size.height/1.5,
+              child: ListView.builder(
+                primary: true,
+                physics: const ClampingScrollPhysics(),
+                itemCount: 10,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (BuildContext context, int index)
+                => VerticalListCard()
               ),
             ),
           ],

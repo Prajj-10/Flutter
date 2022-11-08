@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewsDashboard extends StatefulWidget {
@@ -6,8 +6,9 @@ class NewsDashboard extends StatefulWidget {
 
   @override
   State<NewsDashboard> createState() => _NewsDashboardState();
-}
+}*/
 
+/*
 class _NewsDashboardState extends State<NewsDashboard> {
   @override
   Widget build(BuildContext context) {
@@ -37,47 +38,11 @@ class _NewsDashboardState extends State<NewsDashboard> {
             const Positioned(
                 top: 70,
                 left: 60,
-                child: Text("Welcome to News Portal", style: TextStyle(fontSize: 30,color: Colors.black87),)),
-
-            Positioned(
-              top: 120,
-              child: SizedBox(
-                height: 210,
-                width: size.width,
-                child: ListView.builder(
-                  primary: true,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context,position){
-                    return const DemoItem();
-                  },),
-              ),
-            ),
-            const Positioned(
-                top: 370,
-                left: 60,
-                child: Text("Social Chefs Comments", style: TextStyle(fontSize: 30,color: Colors.black87),)),
-
-            Positioned(
-              top: 400,
-              child: SizedBox(
-                height: size.height,
-                width: size.width,
-                child: ListView.builder(
-                  primary: true,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: 20,
-                  itemBuilder: (context,position){
-                    return const DemoItem2();
-                  },),
-              ),
-            ),
-          ],
-
-        ),
-      ),
+                child: Text("Welcome to News Portal", style: TextStyle(fontSize: 30,color: Colors.black87),))
+    ],
+    ),
+    ),
     );
   }
 }
+*/

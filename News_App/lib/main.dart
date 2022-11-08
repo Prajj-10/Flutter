@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/main.dart';
+import 'package:news_app/Dashboard.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +19,12 @@ class MyApp extends StatelessWidget {
       primarySwatch: Colors.blue,
         
     ),
-      home: const MyHomePage(title: 'Home Page'),
+      home: const Dashboard(),
 
 
     );
   }
 }
+
+
 
