@@ -1,9 +1,12 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 import 'package:news_app/api/get.dart';
 import 'package:news_app/customcards.dart';
 import 'package:news_app/model/newsapi.dart';
+import 'package:intl/intl.dart';
+
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -13,8 +16,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  String url = 'https://e3.365dm.com/22/08/768x432/skynews-breaking-news-breakingnews_5875724.jpg?20220906151704';
-  String imageURL = 'https://yt3.ggpht.com/MRywaef1JLriHf-MUivy7-WAoVAL4sB7VHZXgmprXtmpOlN73I4wBhjjWdkZNFyJNiUP6MHm1w=s900-c-k-c0x00ffffff-no-rj';
+  // String url = 'https://e3.365dm.com/22/08/768x432/skynews-breaking-news-breakingnews_5875724.jpg?20220906151704';
+  // String imageURL = 'https://yt3.ggpht.com/MRywaef1JLriHf-MUivy7-WAoVAL4sB7VHZXgmprXtmpOlN73I4wBhjjWdkZNFyJNiUP6MHm1w=s900-c-k-c0x00ffffff-no-rj';
   late Future<NewsApi?> futureNews;
 
 
@@ -22,7 +25,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState(){
     super.initState();
-    futureNews = GetApi.getNewsData(context) as Future<NewsApi>;
+    futureNews = GetApi.getNewsData(context) as Future<NewsApi?>;
 
   }
   @override
@@ -85,7 +88,7 @@ class _DashboardState extends State<Dashboard> {
                               child: Container(
                                 child: Stack(
                                   children: [
-                                    CachedNetworkImage(imageUrl: imageURL,
+                                    CachedNetworkImage(imageUrl: snapshot.data.articles[index].urlToImage,
                                       fit: BoxFit.cover,
                                       width: size.width/1.6,
                                       height: size.height/5 ,
@@ -93,7 +96,7 @@ class _DashboardState extends State<Dashboard> {
                                       const Icon(Icons.do_not_disturb_alt,
                                         color: Colors.white,),
                                       placeholder: (context,url)=>
-                                      const CircularProgressIndicator(),
+                                      const SizedBox(height:20, width: 20, child: CircularProgressIndicator()),
                                     ),
                                     Positioned(
                                       bottom: 5,left: 10,
